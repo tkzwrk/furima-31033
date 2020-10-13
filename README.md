@@ -2,13 +2,16 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| kananame | string | null: false |
-| born     | date   | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| first_name      | string | null: false |
+| last_name       | string | null: false |
+| first_name_kana | string | null: false |
+| last_name_kana  | string | null: false |
+| born            | date   | null: false |
 
 ### Association
 
@@ -17,31 +20,27 @@
 
 ## itmes テーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| title    | string     | null: false                    |
-| text     | text       |                                |
-| image    | integer    | null: false                    |
-| category | string     | null: false                    |
-| condition| string     | null: false                    |
-| charge   | integer    | null: false                    |
-| area     | string     | null: false                    |
-| days     | date       | null: false                    |
-| price    | integer    | null: false                    |
-| user     | references | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| title       | string     | null: false                    |
+| text        | text       | null: false                    |
+| category_id | integer    | null: false                    |
+| condition_id| integer    | null: false                    |
+| charge      | integer    | null: false                    |
+| area_id     | integer    | null: false                    |
+| days_id     | integer    | null: false                    |
+| price       | integer    | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many   :buys
+- has_one    :buy
 - belongs_to :user
 
 ## buys テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| card      | string     | null: false,                   |
-| time_limit| date       | null: false,                   |
-| safety    | integer    | null: false,                   |
 | user      | references | null: false, foreign_key: true |
 | item      | references | null: false, foreign_key: true |
 
@@ -53,14 +52,15 @@
 
 ## deliverys テーブル
 
-| Column     | Type       | Options     |
-| ---------- | ---------- | ----------- |
-| postal_code| integer    | null: false |
-| prefectures| string     | null: false |
-| cities     | string     | null: false |
-| add        | text       | null: false |
-| bill_nam   | text       |             |
-| phone      | string     | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefectures_id| integer     | null: false                    |
+| cities        | string     | null: false                    |
+| add           | text       | null: false                    |
+| bill_name     | text       |                                |
+| phone         | string     | null: false                    |
+| buy           | references | null: false, foreign_key: true |
 
 ### Association
 
