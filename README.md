@@ -20,17 +20,18 @@
 
 ## itmes テーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| title       | string     | null: false                    |
-| text        | text       | null: false                    |
-| category_id | integer    | null: false                    |
-| condition_id| integer    | null: false                    |
-| charge      | integer    | null: false                    |
-| area_id     | integer    | null: false                    |
-| days_id     | integer    | null: false                    |
-| price       | integer    | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| title         | string     | null: false                    |
+| text          | text       | null: false                    |
+| category_id   | integer    | null: false                    |
+| condition_id  | integer    | null: false                    |
+| charge_id     | integer    | null: false                    |
+| area_id       | integer    | null: false                    |
+| days_id       | integer    | null: false                    |
+| price         | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| prefectures_id| integer    | null: false                    |
 
 ### Association
 
@@ -55,10 +56,10 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| prefectures_id| integer     | null: false                    |
+| prefectures_id| integer    | null: false                    |
 | cities        | string     | null: false                    |
 | add           | text       | null: false                    |
-| bill_name     | text       |                                |
+| bill_name     | string     |                                |
 | phone         | string     | null: false                    |
 | buy           | references | null: false, foreign_key: true |
 
