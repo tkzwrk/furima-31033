@@ -3,21 +3,21 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :first_name, presence: true,format: {
+  validates :first_name, presence: true, format: {
     with: /\A[ぁ-んァ-ン一-龥]/,
-    message: "全角のみで入力して下さい"
+    message: '全角のみで入力して下さい'
   }
-  validates :last_name, presence: true,format: {
+  validates :last_name, presence: true, format: {
     with: /\A[ぁ-んァ-ン一-龥]/,
-    message: "全角のみで入力して下さい"
+    message: '全角のみで入力して下さい'
   }
-  validates :first_name_kana, presence: true,format: {
+  validates :first_name_kana, presence: true, format: {
     with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-    message: "全角カタカナのみで入力して下さい"
+    message: '全角カタカナのみで入力して下さい'
   }
-  validates :last_name_kana, presence: true,format: {
+  validates :last_name_kana, presence: true, format: {
     with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-    message: "全角カタカナのみで入力して下さい"
+    message: '全角カタカナのみで入力して下さい'
   }
   validates :born, presence: true
 end
@@ -28,4 +28,3 @@ end
 # パスワードが必須であること
 # パスワードは、6文字以上での入力が必須であること
 # パスワードとパスワード（確認用）、値の一致が必須であること
-
