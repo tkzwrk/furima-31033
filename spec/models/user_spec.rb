@@ -76,24 +76,23 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it 'メールアドレスは、@を含む必要があること'do
+      it 'メールアドレスは、@を含む必要があること' do
         @user.email = 'hogehogehoge'
         @user.valid?
         expect(@user.errors.full_messages).to include('Email is invalid')
       end
-      it 'パスワードは、半角英数字混合（英語のみ×）での入力が必須であること'do
+      it 'パスワードは、半角英数字混合（英語のみ×）での入力が必須であること' do
         @user.password = 'hogehogehoge'
         @user.password_confirmation = 'hogehogehoge'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid')
       end
-      it 'パスワードは、半角英数字混合（数字のみ×）での入力が必須であること'do
+      it 'パスワードは、半角英数字混合（数字のみ×）での入力が必須であること' do
         @user.password = '111111'
         @user.password_confirmation = '111111'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid')
       end
-      
     end
   end
 end
