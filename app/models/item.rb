@@ -11,11 +11,15 @@ class Item < ApplicationRecord
     validates :charge_id
     validates :area_id
     validates :days_id
-    validates :price
+    validates :price,numericality: {
+      only_integer: true, 
+      greater_than_or_equal_to: 300, 
+      less_than_or_equal_to: 9999999
+    },
+    format:{
+      with: /\A[0-9]+\z/
+    }
+    validates :image
   end
 end
 
-# 以下未実装バリデーション 
-# 画像一枚つけること
-# 価格の範囲300から9999999
-# 価格は半角英数字のみ
