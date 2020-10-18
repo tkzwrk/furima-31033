@@ -28,10 +28,9 @@
 | condition_id  | integer    | null: false                    |
 | charge_id     | integer    | null: false                    |
 | area_id       | integer    | null: false                    |
-| days_id       | integer    | null: false                    |
+| day_id        | integer    | null: false                    |
 | price         | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
-| prefectures_id| integer    | null: false                    |
 
 ### Association
 
@@ -56,7 +55,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| prefectures_id| integer    | null: false                    |
+| area_id       | integer    | null: false                    |
 | cities        | string     | null: false                    |
 | add           | text       | null: false                    |
 | bill_name     | string     |                                |
