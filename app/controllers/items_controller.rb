@@ -23,9 +23,18 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
   end
 
-  # def edit
-  #   @item = Item.find_by(id: params[:id])
-  # end
+  def update
+    @item = Item.find_by(id: params[:id])
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
+  end
+
+  def edit
+    @item = Item.find_by(id: params[:id])
+  end
 
   private
 
