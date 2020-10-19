@@ -19,7 +19,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  def update
+  def show
+    @item = Item.find_by(id:params[:id])
   end
 
   private
