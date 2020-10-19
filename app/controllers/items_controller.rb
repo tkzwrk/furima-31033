@@ -23,6 +23,10 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id:params[:id])
   end
 
+  def edit
+    @item = Item.find_by(id:params[:id])
+  end
+
   private
 
   def item_params
@@ -33,3 +37,4 @@ class ItemsController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 end
+
