@@ -20,11 +20,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find_by(id:params[:id])
+    @item = Item.find_by(id: params[:id])
   end
 
   def edit
-    @item = Item.find_by(id:params[:id])
+    @item = Item.find_by(id: params[:id])
   end
 
   private
@@ -37,4 +37,3 @@ class ItemsController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 end
-
