@@ -23,22 +23,24 @@ class ItemsController < ApplicationController
   def show
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @item.update(item_params)
-      redirect_to item_path
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @item.update(item_params)
+  #     redirect_to item_path
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
-    if @item.destroy
-      redirect_to root_path
-    else
-      render :show
+    if @item.user_id == current_user.id
+      if @item.destroy
+        redirect_to root_path
+      else
+        render :show
+      end
     end
   end
 
