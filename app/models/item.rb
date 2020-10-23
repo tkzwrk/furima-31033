@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to_active_hash :day
 
-  # has_one    :buy
+  has_one    :buy
   belongs_to :user
   has_one_attached :image
 
