@@ -10,6 +10,10 @@ RSpec.describe BuyDelivery, type: :model do
       it 'postal_codeとarea_idとcitiesとaddとphoneとtokenが存在すれば購入できる' do
         expect(@buy_delivery).to be_valid
       end
+      it 'bill_nameが空でも購入できる' do
+        @buy_delivery.bill_name = ''
+        expect(@buy_delivery).to be_valid
+      end
     end
 
     context '商品購入がうまくいかない時' do
@@ -18,7 +22,7 @@ RSpec.describe BuyDelivery, type: :model do
         @buy_delivery.valid?
         expect(@buy_delivery.errors.full_messages).to include("Postal code can't be blank")
       end
-      it 'postal_codeがにハイフンがないと購入できない' do
+      it 'postal_codeにハイフンがないと購入できない' do
         @buy_delivery.postal_code = '1234567'
         @buy_delivery.valid?
         expect(@buy_delivery.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
