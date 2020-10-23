@@ -1,5 +1,8 @@
 class BuysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item
+  before_action :set_soldout
+  before_action :set_user_buy
 
   def index
     @buy_delivery = BuyDelivery.new
@@ -33,4 +36,17 @@ class BuysController < ApplicationController
   def set_item
     @item = Item.find(params[:item_id])
   end
+
+  def set_soldout
+    if @item.buy.present?
+      redirect_to root_path
+    end
+  end
+
+  def set_user_buy
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
+
 end
