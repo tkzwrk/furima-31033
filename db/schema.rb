@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_053913) do
+ActiveRecord::Schema.define(version: 2020_10_21_101930) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,28 @@ ActiveRecord::Schema.define(version: 2020_10_15_053913) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "buys", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_buys_on_item_id"
+    t.index ["user_id"], name: "index_buys_on_user_id"
+  end
+
+  create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "postal_code", null: false
+    t.integer "area_id", null: false
+    t.string "cities", null: false
+    t.text "add", null: false
+    t.string "bill_name"
+    t.string "phone", null: false
+    t.bigint "buy_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["buy_id"], name: "index_deliveries_on_buy_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,5 +89,8 @@ ActiveRecord::Schema.define(version: 2020_10_15_053913) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "buys", "items"
+  add_foreign_key "buys", "users"
+  add_foreign_key "deliveries", "buys"
   add_foreign_key "items", "users"
 end
