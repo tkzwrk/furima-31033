@@ -1,4 +1,4 @@
-class UserBuy
+class BuyDelivery
   include ActiveModel::Model
   attr_accessor :item_id,:user_id,:postal_code,:area_id,:cities,:add,:bill_name,:phone,:token,:buy_id
 
@@ -13,6 +13,6 @@ class UserBuy
 
   def save
     buy = Buy.create(item_id: item_id,user_id: user_id)
-    Deliverys.create(postal_code: postal_code,cities: cities,add: add,bill_name: bill_name,phone: phone,area_id: area_id,buy_id: buy.id)
+    Delivery.create(postal_code: postal_code,cities: cities,add: add,bill_name: bill_name,phone: phone,area_id: area_id,buy_id: buy.id)
   end
 end
