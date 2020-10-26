@@ -52,6 +52,11 @@ RSpec.describe BuyDelivery, type: :model do
         @buy_delivery.valid?
         expect(@buy_delivery.errors.full_messages).to include('Phone is the wrong length (should be 11 characters)')
       end
+      it 'phoneにハイフンがあると購入できない' do
+        @buy_delivery.phone = '123-1234-12341'
+        @buy_delivery.valid?
+        expect(@buy_delivery.errors.full_messages).to include('Phone is the wrong length (should be 11 characters)')
+      end
       it 'phoneが全角文字だと購入できない' do
         @buy_delivery.phone = '１２３１２３４１２３４'
         @buy_delivery.valid?
